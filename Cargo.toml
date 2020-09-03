@@ -8,10 +8,9 @@ edition = "2018"
 
 [dependencies]
 
-[target.'cfg(macOS)'.dependencies.amethyst]
-version = "0.15.3"
-features = ["metal"]
+[target.'cfg(not(target_os = "macos"))'.dependencies]
+amethyst = { "version" = "0.15.3", features = ["vulkan"] }
 
-[target.'cfg(linux)'.dependencies.amethyst]
-version = "0.15.3"
-features = ["vulkan"]
+[target.'cfg(target_os = "macos")'.dependencies]
+amethyst = { "version" = "0.15.3", features = ["metal"] }
+
